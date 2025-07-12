@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  doctrine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: doctrine-app
+    restart: unless-stopped
+
+  # Development service (optional)
+  doctrine-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8081:8080"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    container_name: doctrine-dev
+    environment:
+      - NODE_ENV=development
+    profiles:
+      - dev

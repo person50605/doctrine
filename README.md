@@ -1,5 +1,13 @@
 # doctrine
 
+## Docker setup
+
+Make the build:
+`docker build -t doctrine .`
+
+Run the build:
+`docker run -p 8080:80 --name doctrine-test --rm doctrine`
+
 ## Project setup
 ```
 npm install
